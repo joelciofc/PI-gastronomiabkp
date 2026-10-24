@@ -1,9 +1,9 @@
 import { createClient } from "@supabase/supabase-js";
-import dotenv from 'dotenv/config';
+import 'dotenv/config';
 
-const conn = createClient({
-    host: process.env.SUPABASE_URL,
-    credential: process.env.SUPABASE_KEY
-});
+const conn = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_KEY
+);
 
 export default conn;
