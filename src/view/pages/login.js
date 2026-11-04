@@ -2,6 +2,7 @@ const renderLoginPage = () => {
     const container = document.createElement('div');
     container.id = 'container';
     container.style.height = '100vh';
+    container.className = "container"
 
     const form = document.createElement('form')
 
@@ -32,7 +33,7 @@ const renderLoginPage = () => {
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const  email = inpEmail.value.trim()
+        const email = inpEmail.value.trim()
         const senha = inpSenha.value.trim()
         const usuario = {
             email,
@@ -50,15 +51,15 @@ const renderLoginPage = () => {
             );
             const confirmacao = await resultado.json();
             if (!resultado.ok) {
-                alert("Conta inexstente!")
+                alert("Login realizado com sucesso!")
             } else {
-                alert("Login realizado com sucesso!");
+                alert("Conta inexstente!");
             } return confirmacao;
         }
         catch {
             console.error(erro)
             console.error(erro);
-            alert("Erro ao logar!");
+            alert("Erro ao cadastrar!");
 
         }
     })
