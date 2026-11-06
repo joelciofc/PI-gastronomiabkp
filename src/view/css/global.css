@@ -1,16 +1,39 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: content-box;
 }
 
-.root{
+.root {
     display: flex;
     flex: 1;
+    justify-content: center;
 }
 
-.container{
+.container {
     display: flex;
     align-content: center;
     justify-content: center;
+    gap: 3rem;
+}
+
+.div-menu {
+    display: flex;
+    justify-content: center;
+
+
+    ul {
+        display: flex;
+        list-style: none;
+        font-family: arial;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        gap: 3rem;
+
+    }
+
+    li {
+        cursor: pointer;
+    }
 }
