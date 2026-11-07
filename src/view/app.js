@@ -41,10 +41,34 @@ function navergarPorHash() {
             app.replaceChildren(renderCadastroPage(
                 interfaceConfig.icons,
                 navegarParaLogin
-            )).
+            ));
                 break
     }
 }
-window.addEventListener("hashchange", navergarPorHash)
+window.addEventListener("hashchange", navergarPorHash);
+
+function navegarPorReq(){
+    const path = window.location.pathname;
+    switch(path){
+        case "/home":
+            app.replaceChildren(renderHomePage);
+            break
+            case "/login":
+            app.replaceChildren(renderLoginPage);
+            break
+            case "/cadastro":
+            app.replaceChildren(renderCadastroPage);
+            break
+    }
+}
 
 navergarPorHash();
+
+function renderizar(){
+    if(window.location.hash){
+        navergarPorHash()
+        return
+    }navegarPorReq();
+}
+
+renderizar();
