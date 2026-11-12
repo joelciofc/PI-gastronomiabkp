@@ -1,7 +1,7 @@
 import conn from "../config/database.js"
 
 class AuthService {
-    static async cadastrar(nome, email, senha) {
+    static async cadastrar(nome, email, senha, tipo_usuario) {
 
         const { data, error } = await conn.auth.signUp(
             {
@@ -9,7 +9,8 @@ class AuthService {
                 password: senha,
                 options: {
                     data: {
-                        nome
+                        nome,
+                        tipo_usuario
                     }
                 }
             }
