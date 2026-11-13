@@ -8,17 +8,34 @@ class AuthController {
                 senha,
                 tipo_usuario
             } = req.body
-            if (!nome || !email || !senha) {
+            if (!nome || !email || !senha || !tipo_usuario) {
                 return res
                     .status(400)
                     .json({ erro: `preencha todos os campos obrigatorios` });
             }
+
+            const tiposPermitidos = [
+                "Apoio",
+                "Auxiliar",
+                "Docente"
+            ]
+            if(!tiposPermitidos.includes(tipo_usuario)){
+                return res
+                .status(400)
+                .json({
+                    erro:`Tipo de usuário inválido`
+                })
+            }
+
+
             const resultado = await AuthService.cadastrar(
                 nome, email, senha, tipo_usuario
             );
             return res.status(201).json({
                 mensagem: `cadastro feito com sucesso!`,
-                usuario: resultado.user,
+                usuario: resultado.dadosUsuario,
+                auth: resultado.auth.user,
+                session: resultado.auth.session,
                 requerConfirmacao: !resultado.session
             })
         }
